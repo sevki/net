@@ -1,0 +1,43 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Net
+  license:
+    name: MIT
+paths:
+  /whois/{name}:
+    get:
+      summary: Gets a User from the database
+      operationId: whois
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+        - Domain
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: the domain name
+          type: string
+      responses:
+        200:
+          description: Successful query
+          schema:
+            $ref: '#/definitions/Domain'
+        404:
+          description: User can't be found
+definitions:
+  Domain:
+    properties:
+      name:
+        type: string
+      available:
+        type: boolean
+      whois:
+        type: string
+    required:
+    - name
+    - whois
+    - available
