@@ -22,7 +22,7 @@ const contentType = "Content-Type"
 
 func encodeWhoisResponse(ctx context.Context, w http.ResponseWriter, response interface{}) error {
 
-	produces := []mime.Type{"application/json"}
+	produces := []mime.Type{"application/x-www-form-urlencoded"}
 
 	resp := response.(_whoisResponse)
 
@@ -74,7 +74,7 @@ func NewNetHTTPServer(svc Net, opts ...options.Option) http.Handler {
 	{
 		svcOptions.RegisterMiddleware("Whois",
 			encoders.AcceptsMustMatch([]mime.Type{
-				"application/json",
+				"application/x-www-form-urlencoded",
 			}),
 		)
 

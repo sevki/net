@@ -10,9 +10,9 @@ paths:
       summary: Gets a User from the database
       operationId: whois
       consumes:
-      - application/json
+      - application/x-www-form-urlencoded
       produces:
-      - application/json
+      - text/html
       tags:
         - Domain
       parameters:
